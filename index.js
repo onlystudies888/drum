@@ -2,6 +2,7 @@ var buttonLength = document.querySelectorAll(".drum").length;
 
 document.addEventListener("keydown", function (event) {
    music(event.key);
+   buttonAnimation(event.key);
 
 })
 
@@ -9,9 +10,8 @@ for (let i = 0; i < buttonLength; i++) {
    var buttonS = document.querySelectorAll(".drum")[i];
    buttonS.addEventListener("click", function () {
       let eventS = this.innerHTML;
-      // console.log(this);
       music(eventS);
-
+      buttonAnimation(eventS);
 
 
    })
@@ -47,4 +47,11 @@ function music(eventS) {
       default:
          break;
    }
+}
+function buttonAnimation(currentKey) {
+   var activatedButton=document.querySelector("."+currentKey);
+   activatedButton.classList.add("pressed")
+   setTimeout(() => {
+      activatedButton.classList.remove("pressed")
+   }, 100);
 }
